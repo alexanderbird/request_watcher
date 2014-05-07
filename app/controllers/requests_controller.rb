@@ -26,7 +26,7 @@ class RequestsController < ApplicationController
     if request.port != 80
       @host += ":" + request.port.to_s
     end
-    @requests = Request.all
+    @requests = Request.all.reverse
   end
 
   # GET /requests/1
