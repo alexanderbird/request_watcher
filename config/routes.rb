@@ -1,4 +1,5 @@
 RequestWatcher::Application.routes.draw do
+  root to: 'requests#index'
   resources :requests do
     get 'clear', on: :collection, as: :clear_all
   end
