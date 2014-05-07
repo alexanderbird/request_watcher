@@ -2,12 +2,16 @@ class RequestsController < ApplicationController
   before_action :set_request, only: [:show, :edit, :update, :destroy]
 
   def watch
-    Request.create(
-      url: params[:args],
-      method: request.method,
-      body: request.body.read
-      )
-    render text: request.body.read
+    respond_to do |format|
+      format.any do
+        Request.create(
+          url: params[:args],
+          method: request.method,
+          body: request.body.read
+          )
+        render text: request.body.read
+      end
+    end
   end
 
   def clear

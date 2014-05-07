@@ -1,7 +1,11 @@
 <p id="notice"><%= notice %></p>
 <h1><strong><%= @request.method %></strong> with params <%= @request.url %></h1>
 <pre>
+<% begin %>
   <%= JSON.pretty_generate(JSON::parse(@request.body)) %>
+  <% rescue %>
+  <%= @request.body %>
+  <% end %>
 </pre>
 
 <div>
