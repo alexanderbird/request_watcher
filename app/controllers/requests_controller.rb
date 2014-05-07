@@ -18,6 +18,10 @@ class RequestsController < ApplicationController
   # GET /requests
   # GET /requests.json
   def index
+    @host = request.protocol + request.host
+    if request.port != 80
+      @host += ":" + request.port
+    end
     @requests = Request.all
   end
 
