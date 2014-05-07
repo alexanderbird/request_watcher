@@ -20,7 +20,7 @@ class RequestsController < ApplicationController
   def index
     @host = request.protocol + request.host
     if request.port != 80
-      @host += ":" + request.port
+      @host += ":" + request.port.to_s
     end
     @requests = Request.all
   end

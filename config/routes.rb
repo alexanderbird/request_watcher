@@ -4,7 +4,7 @@ RequestWatcher::Application.routes.draw do
     get 'clear', on: :collection, as: :clear_all
   end
   get 'api/1/watch(/:args)' => "requests#watch", as: :listening
-  post 'api/1/watch(/:args)' => "requests#watch"
+  post 'api/1/watch(/:args)' => "requests#watch", :defaults => { :format => 'json' }
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
